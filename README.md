@@ -23,3 +23,6 @@ and initialize it with:
     $('#gear-near-you').maplist({ mapSelector: '#gear-near-you-map' })
 
 which will fill the map at mapSelector with the latlongs from the li's.
+
+## Design Mockup
+![Gear Near You](gear-near-you.jpg)
