@@ -1,3 +1,5 @@
+# maplist.js
+
 ## Description
 
 MapList is a jQuery plugin that makes it easy to create maps that are linked
