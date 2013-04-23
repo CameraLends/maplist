@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maplist demo</title>
+    <script src='assets/jquery.min.js'></script>
+    <script src='../dist/maplist.js'></script>
+    <script src='https://maps.googleapis.com/maps/api/js?key=YOUR_MAPS_API_KEY&amp;sensor=false'></script>
+    <style>
+      .map {
+        width: 80%;
+        height: 400px;
+        float: left; }
+      
+      .lenders {
+        float: left;
+        list-style-type: none;
+        padding: 0px; }
+        .lenders li {
+          display: block;
+          padding: 20px;
+          background: #fbfbfb; }
+          .lenders li:hover {
+            background: #EEE; }
+          .lenders li .title {
+            display: block; }
+        .lenders .selected {
+          background: #EEE; }
+    </style>
+    <script>
+      $(document).ready(function() {
+        var mapOptions = {
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+      
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        map.setZoom(15);
+        $("ul").maplist(map, {
+          icon: "assets/red-icon.png",
+          hoverIcon: "assets/blue-icon.png"
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='map' id='map-canvas'></div>
+      <ul class='lenders'>
+        <li data-latlong='[48.89457, 2.34322]' id='place-1'>
+          <a class='title' href='#'>
+            Canon 60D ($7/day)
+          </a>
+          <a class='btn' href='#'>
+            Rent
+          </a>
+        </li>
+        <li data-latlong='[48.89593, 2.34464]' id='place-2'>
+          <a class='title' href='#'>
+            First Canon 60D ($6/day)
+          </a>
+          <a class='btn' href='#'>
+            Rent
+          </a>
+        </li>
+        <li data-latlong='[48.89386, 2.34263]' id='place-3'>
+          <a class='title' href='#'>
+            Another Canon 60D ($6/day)
+          </a>
+          <a class='btn' href='#'>
+            Rent
+          </a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

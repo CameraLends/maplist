@@ -1,0 +1,74 @@
+!!!
+%html
+  %head
+    %title Maplist demo
+    %script{src: "assets/jquery.min.js"}
+    %script{src: "../dist/maplist.js"}
+    %script{src:"https://maps.googleapis.com/maps/api/js?key=#{ENV['API_KEY'] || "YOUR_MAPS_API_KEY"}&sensor=false"}
+
+    :scss
+      .map {
+        width: 80%;
+        height: 400px;
+        float: left;
+      }
+
+      .lenders {
+        float: left;
+        list-style-type: none;
+        padding: 0px;
+
+        li {
+          display: block;
+          padding: 20px;
+          background: #fbfbfb;
+
+          &:hover {
+            background: #EEE;
+          }
+          .title {
+            display: block;
+          }
+        }
+
+        .selected {
+          background: #EEE;
+        }
+      }
+
+
+    :javascript
+      $(document).ready(function() {
+        var mapOptions = {
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        map.setZoom(15);
+        $("ul").maplist(map, {
+          icon: "assets/red-icon.png",
+          hoverIcon: "assets/blue-icon.png"
+        });
+      });
+
+  %body
+    .container
+      %div{id: "map-canvas", class: "map"}
+      %ul{class: "lenders"}
+        %li{ id: "place-1", data: { latlong: "[48.89457, 2.34322]" } }
+          %a.title{ href: '#' }
+            Canon 60D ($7/day)
+          %a.btn{ href: '#' }
+            Rent
+
+        %li{ id: "place-2", data: { latlong: "[48.89593, 2.34464]" } }
+          %a.title{ href: '#' }
+            First Canon 60D ($6/day)
+          %a.btn{ href: '#' }
+            Rent
+
+        %li{ id: "place-3", data: { latlong: "[48.89386, 2.34263]" } }
+          %a.title{ href: '#' }
+            Another Canon 60D ($6/day)
+          %a.btn{ href: '#' }
+            Rent
